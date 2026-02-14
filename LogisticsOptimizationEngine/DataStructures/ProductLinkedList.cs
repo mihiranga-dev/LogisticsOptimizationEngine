@@ -15,17 +15,19 @@ namespace LogisticsOptimizationEngine.DataStructures
         {
             ProductNode newNode = new ProductNode(newProduct);
 
-            if (head != null)
+            if (head == null)
             {
                 head = newNode;
             }
             else
             {
                 ProductNode current = head;
-                while (current != null)
+
+                while (current.Next != null)
                 {
                     current = current.Next;
                 }
+
                 current.Next = newNode;
             }
         }
