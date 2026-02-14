@@ -40,6 +40,7 @@
             this.txtPrice = new System.Windows.Forms.TextBox();
             this.txtStock = new System.Windows.Forms.TextBox();
             this.btnSort = new System.Windows.Forms.Button();
+            this.btnTreeSearch = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -144,11 +145,22 @@
             this.btnSort.UseVisualStyleBackColor = true;
             this.btnSort.Click += new System.EventHandler(this.btnSort_Click);
             // 
+            // btnTreeSearch
+            // 
+            this.btnTreeSearch.Location = new System.Drawing.Point(210, 360);
+            this.btnTreeSearch.Name = "btnTreeSearch";
+            this.btnTreeSearch.Size = new System.Drawing.Size(107, 23);
+            this.btnTreeSearch.TabIndex = 12;
+            this.btnTreeSearch.Text = "Fast Tree Search";
+            this.btnTreeSearch.UseVisualStyleBackColor = true;
+            this.btnTreeSearch.Click += new System.EventHandler(this.btnTreeSearch_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(775, 446);
+            this.Controls.Add(this.btnTreeSearch);
             this.Controls.Add(this.btnSort);
             this.Controls.Add(this.txtStock);
             this.Controls.Add(this.txtPrice);
@@ -182,6 +194,7 @@
         private System.Windows.Forms.TextBox txtPrice;
         private System.Windows.Forms.TextBox txtStock;
         private System.Windows.Forms.Button btnSort;
+        private System.Windows.Forms.Button btnTreeSearch;
     }
 }
 

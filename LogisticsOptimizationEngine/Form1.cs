@@ -15,15 +15,18 @@ namespace LogisticsOptimizationEngine
 {
     public partial class Form1 : Form
     {
-        // Data structure instance
+        // Linked List
         ProductLinkedList inventory = new ProductLinkedList();
+
+        // Binary Search Tree - O(log n) searching
+        InventoryTree searchTree = new InventoryTree();
 
         public Form1()
         {
             InitializeComponent();
         }
 
-        // Logic for adding product
+        // Add Product
         private void btnAdd_Product(object sender, EventArgs e)
         {
             try
@@ -34,12 +37,17 @@ namespace LogisticsOptimizationEngine
                 int stock = int.Parse(txtStock.Text);
 
                 Product newProd = new Product(id, name, price, stock);
+
+                // Add to Linear structure
                 inventory.AddProduct(newProd);
+
+                // Add to Non-Linear structure
+                searchTree.Insert(newProd);
 
                 lstDisplay.Items.Add($"ID: {id} | {name} | ${price}");
 
                 txtID.Clear(); txtName.Clear(); txtPrice.Clear(); txtStock.Clear();
-                MessageBox.Show("Product added to Linked List!");
+                MessageBox.Show("Product added Successfully!");
             }
             catch (Exception ex)
             {
@@ -47,7 +55,7 @@ namespace LogisticsOptimizationEngine
             }
         }
 
-        // Logic for searching
+        // Algorithm: Linear Search (Via Linked List)
         private void btnSearch_Click(object sender, EventArgs e)
         {
             try
@@ -63,7 +71,7 @@ namespace LogisticsOptimizationEngine
 
                 if (result != null)
                 {
-                    MessageBox.Show($"Found: {result.Name}\nPrice: ${result.Price}\nStock: {result.StockQuantity}");
+                    MessageBox.Show($"[LINEAR SEARCH] Found: {result.Name}\nPrice: ${result.Price}\nStock: {result.StockQuantity}");
                 }
                 else
                 {
@@ -76,10 +84,10 @@ namespace LogisticsOptimizationEngine
             }
         }
 
-        private void Form1_Load(object sender, EventArgs e) { }
-
+        // Alogorithm - Quick Sort - O(n log n) - Efficient
         private void btnSort_Click(object sender, EventArgs e)
         {
+            // Extract from Linked List to Array for Random Access sorting
             Product[] productArray = inventory.ToArray();
 
             if (productArray.Length < 2)
@@ -89,11 +97,10 @@ namespace LogisticsOptimizationEngine
             }
 
             ProductSorter sorter = new ProductSorter();
-
             sorter.QuickSort(productArray, 0, productArray.Length - 1);
 
             lstDisplay.Items.Clear();
-            lstDisplay.Items.Add("SORTED BY PRICE (Low to High)");
+            lstDisplay.Items.Add("--- SORTED BY PRICE (Low to High) ---");
 
             foreach (Product p in productArray)
             {
@@ -102,5 +109,28 @@ namespace LogisticsOptimizationEngine
 
             MessageBox.Show("Inventory sorted successfully using Quick Sort!");
         }
+
+        // Alogorithm: BST Search (Non-Linear) - O(log n) - professional standard for high-speed lookup
+        private void btnTreeSearch_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(txtID.Text)) return;
+
+                int id = int.Parse(txtID.Text);
+                Product result = searchTree.Search(id);
+
+                if (result != null)
+                    MessageBox.Show($"[TREE SEARCH] Found: {result.Name} (Price: ${result.Price})");
+                else
+                    MessageBox.Show("Product not found in Tree");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error: " + ex.Message);
+            }
+        }
+
+        private void Form1_Load(object sender, EventArgs e) { }
     }
 }

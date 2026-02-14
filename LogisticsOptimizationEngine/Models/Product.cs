@@ -15,10 +15,10 @@ namespace LogisticsOptimizationEngine.Models
 
         public Product(int id, string name, double price, int stock)
         {
-            ProductID = id; 
-            Name = name; 
-            Price = price; 
-            StockQuantity = stock;
+            this.ProductID = id; 
+            this.Name = name; 
+            this.Price = price; 
+            this.StockQuantity = stock;
         }
     }
 }

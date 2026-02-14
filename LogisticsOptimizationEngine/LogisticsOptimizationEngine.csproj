@@ -47,6 +47,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Algorithm\ProductShorter.cs" />
+    <Compile Include="DataStructures\InventoryTree.cs" />
+    <Compile Include="DataStructures\InventoryTreeNode.cs" />
     <Compile Include="DataStructures\ProductLinkedList.cs" />
     <Compile Include="DataStructures\ProductNode.cs" />
     <Compile Include="Form1.cs">
