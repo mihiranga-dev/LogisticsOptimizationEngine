@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using LogisticsOptimizationEngine.Models;
 using LogisticsOptimizationEngine.DataStructures;
+using LogisticsOptimizationEngine.Algorithm;
 
 namespace LogisticsOptimizationEngine
 {
@@ -76,5 +77,30 @@ namespace LogisticsOptimizationEngine
         }
 
         private void Form1_Load(object sender, EventArgs e) { }
+
+        private void btnSort_Click(object sender, EventArgs e)
+        {
+            Product[] productArray = inventory.ToArray();
+
+            if (productArray.Length < 2)
+            {
+                MessageBox.Show("Need at least 2 products to sort!");
+                return;
+            }
+
+            ProductSorter sorter = new ProductSorter();
+
+            sorter.QuickSort(productArray, 0, productArray.Length - 1);
+
+            lstDisplay.Items.Clear();
+            lstDisplay.Items.Add("SORTED BY PRICE (Low to High)");
+
+            foreach (Product p in productArray)
+            {
+                lstDisplay.Items.Add($"ID: {p.ProductID} | {p.Name} | ${p.Price}");
+            }
+
+            MessageBox.Show("Inventory sorted successfully using Quick Sort!");
+        }
     }
 }

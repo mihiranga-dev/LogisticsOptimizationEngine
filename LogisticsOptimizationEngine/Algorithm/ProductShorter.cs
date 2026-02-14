@@ -16,7 +16,7 @@ namespace LogisticsOptimizationEngine.Algorithm
             {
                 int pivotIndex = Partition(array, low, high);
 
-                QuickSort(array, low, pivotIndex);
+                QuickSort(array, low, pivotIndex - 1);
                 QuickSort(array, pivotIndex + 1, high);
             }
         }
