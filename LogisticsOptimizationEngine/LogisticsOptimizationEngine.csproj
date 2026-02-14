@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Algorithm\ProductShorter.cs" />
     <Compile Include="DataStructures\ProductLinkedList.cs" />
     <Compile Include="DataStructures\ProductNode.cs" />
     <Compile Include="Form1.cs">

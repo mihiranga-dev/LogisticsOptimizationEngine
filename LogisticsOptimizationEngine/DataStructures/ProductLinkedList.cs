@@ -46,5 +46,27 @@ namespace LogisticsOptimizationEngine.DataStructures
             }
             return null;
         }
+
+        public Product[] ToArray()
+        {
+            int count = 0;
+            ProductNode current = head;
+            while (current != null)
+            {
+                count++;
+                current = current.Next;
+            }
+
+            Product[] arr = new Product[count];
+
+            current = head;
+            for (int i = 0; i < count; i++)
+            {
+                arr[i] = current.Data;
+                current = current.Next;
+            }
+
+            return arr;
+        }
     }
 }
