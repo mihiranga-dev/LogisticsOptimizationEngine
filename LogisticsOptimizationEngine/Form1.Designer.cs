@@ -46,8 +46,16 @@
             this.label5 = new System.Windows.Forms.Label();
             this.lstDisplay = new System.Windows.Forms.ListBox();
             this.btnSort = new System.Windows.Forms.Button();
+            this.btnInitializeMap = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
+            this.cmbStart = new System.Windows.Forms.ComboBox();
+            this.cmbEnd = new System.Windows.Forms.ComboBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.btnFindRoute = new System.Windows.Forms.Button();
+            this.lblResult = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            this.tabPage2.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -88,6 +96,13 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.lblResult);
+            this.tabPage2.Controls.Add(this.btnFindRoute);
+            this.tabPage2.Controls.Add(this.cmbEnd);
+            this.tabPage2.Controls.Add(this.label7);
+            this.tabPage2.Controls.Add(this.cmbStart);
+            this.tabPage2.Controls.Add(this.label6);
+            this.tabPage2.Controls.Add(this.btnInitializeMap);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
@@ -236,6 +251,78 @@
             this.btnSort.UseVisualStyleBackColor = true;
             this.btnSort.Click += new System.EventHandler(this.btnSort_Click);
             // 
+            // btnInitializeMap
+            // 
+            this.btnInitializeMap.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnInitializeMap.Location = new System.Drawing.Point(287, 50);
+            this.btnInitializeMap.Name = "btnInitializeMap";
+            this.btnInitializeMap.Size = new System.Drawing.Size(195, 29);
+            this.btnInitializeMap.TabIndex = 0;
+            this.btnInitializeMap.Text = "Load Delivery Network";
+            this.btnInitializeMap.UseVisualStyleBackColor = true;
+            this.btnInitializeMap.Click += new System.EventHandler(this.btnInitializeMap_Click);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(226, 121);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(102, 16);
+            this.label6.TabIndex = 1;
+            this.label6.Text = "Start Location";
+            this.label6.Click += new System.EventHandler(this.label6_Click);
+            // 
+            // cmbStart
+            // 
+            this.cmbStart.FormattingEnabled = true;
+            this.cmbStart.Location = new System.Drawing.Point(334, 120);
+            this.cmbStart.Name = "cmbStart";
+            this.cmbStart.Size = new System.Drawing.Size(192, 21);
+            this.cmbStart.TabIndex = 2;
+            this.cmbStart.SelectedIndexChanged += new System.EventHandler(this.cmbStart_SelectedIndexChanged);
+            // 
+            // cmbEnd
+            // 
+            this.cmbEnd.FormattingEnabled = true;
+            this.cmbEnd.Location = new System.Drawing.Point(334, 157);
+            this.cmbEnd.Name = "cmbEnd";
+            this.cmbEnd.Size = new System.Drawing.Size(192, 21);
+            this.cmbEnd.TabIndex = 4;
+            this.cmbEnd.SelectedIndexChanged += new System.EventHandler(this.cmbEnd_SelectedIndexChanged);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(226, 158);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(85, 16);
+            this.label7.TabIndex = 3;
+            this.label7.Text = "Destination";
+            this.label7.Click += new System.EventHandler(this.label7_Click);
+            // 
+            // btnFindRoute
+            // 
+            this.btnFindRoute.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFindRoute.Location = new System.Drawing.Point(287, 214);
+            this.btnFindRoute.Name = "btnFindRoute";
+            this.btnFindRoute.Size = new System.Drawing.Size(195, 32);
+            this.btnFindRoute.TabIndex = 5;
+            this.btnFindRoute.Text = "Calculate Shortest Path";
+            this.btnFindRoute.UseVisualStyleBackColor = true;
+            this.btnFindRoute.Click += new System.EventHandler(this.btnFindRoute_Click);
+            // 
+            // lblResult
+            // 
+            this.lblResult.AutoSize = true;
+            this.lblResult.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblResult.Location = new System.Drawing.Point(46, 293);
+            this.lblResult.Name = "lblResult";
+            this.lblResult.Size = new System.Drawing.Size(282, 24);
+            this.lblResult.TabIndex = 6;
+            this.lblResult.Text = "Path result will appear here...";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -247,6 +334,8 @@
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
+            this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -271,6 +360,13 @@
         private System.Windows.Forms.Button btnTreeSearch;
         private System.Windows.Forms.Button btnSort;
         private System.Windows.Forms.ListBox lstDisplay;
+        private System.Windows.Forms.ComboBox cmbStart;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button btnInitializeMap;
+        private System.Windows.Forms.Button btnFindRoute;
+        private System.Windows.Forms.ComboBox cmbEnd;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label lblResult;
     }
 }
 

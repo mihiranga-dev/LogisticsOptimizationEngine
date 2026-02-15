@@ -19,7 +19,7 @@ namespace LogisticsOptimizationEngine.DataStructures
             Neighbors = new Dictionary<LocationNode, int>();
         }
 
-        public void AddEdge(LocationNode target, int distance)
+        public void AddNeighbor(LocationNode target, int distance)
         {
             Neighbors[target] = distance;
         }

@@ -21,6 +21,9 @@ namespace LogisticsOptimizationEngine
         // Binary Search Tree - O(log n) searching
         InventoryTree searchTree = new InventoryTree();
 
+        // Graph
+        LogisticsGraph deliveryMap = new LogisticsGraph();
+
         public Form1()
         {
             InitializeComponent();
@@ -129,6 +132,79 @@ namespace LogisticsOptimizationEngine
             {
                 MessageBox.Show("Error: " + ex.Message);
             }
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cmbStart_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void cmbEnd_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnInitializeMap_Click(object sender, EventArgs e)
+        {
+            // Clear existing data to prevent duplicates if clicked twice
+            deliveryMap.Nodes.Clear();
+            cmbStart.Items.Clear();
+            cmbEnd.Items.Clear();
+
+            // Create Warehouse Locations (Nodes)
+            LocationNode colombo = new LocationNode("Colombo");
+            LocationNode kandy = new LocationNode("Kandy");
+            LocationNode galle = new LocationNode("Galle");
+            LocationNode jaffna = new LocationNode("Jaffna");
+            LocationNode negombo = new LocationNode("Negombo");
+
+            // Create the "Roads" (Edges) with distances in km
+            colombo.AddNeighbor(negombo, 35);
+            colombo.AddNeighbor(galle, 125);
+            negombo.AddNeighbor(kandy, 110);
+            kandy.AddNeighbor(jaffna, 320);
+            galle.AddNeighbor(kandy, 210);
+
+            // Add them to Graph
+            deliveryMap.Nodes.AddRange(new[] { colombo, negombo, kandy, galle, jaffna });
+
+            // Fill the UI Dropdowns
+            foreach (var node in deliveryMap.Nodes)
+            {
+                cmbStart.Items.Add(node.Name);
+                cmbEnd.Items.Add(node.Name);
+            }
+
+            MessageBox.Show("Delivery Network Loaded Successfully!");
+        }
+
+        private void btnFindRoute_Click(object sender, EventArgs e)
+        {
+            if (cmbStart.SelectedItem == null || cmbEnd.SelectedItem == null)
+            {
+                MessageBox.Show("Please select both a Start and Destination.");
+                return;
+            }
+
+            string startCity = cmbStart.SelectedItem.ToString();
+            string endCity = cmbEnd.SelectedItem.ToString();
+
+            // Call our Algorithm
+            RoutePlanner planner = new RoutePlanner();
+            string finalPath = planner.FindShortestPath(deliveryMap, startCity, endCity);
+
+            // Display the result
+            lblResult.Text = finalPath;
         }
     }
 }
