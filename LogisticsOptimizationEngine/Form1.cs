@@ -150,55 +150,64 @@ namespace LogisticsOptimizationEngine
 
         private void btnInitializeMap_Click(object sender, EventArgs e)
         {
-            // Clear existing data to prevent duplicates if clicked twice
+            // Clear old data
             deliveryMap.Nodes.Clear();
             cmbStart.Items.Clear();
             cmbEnd.Items.Clear();
 
-            // Create Warehouse Locations (Nodes)
-            LocationNode colombo = new LocationNode("Colombo");
-            LocationNode kandy = new LocationNode("Kandy");
-            LocationNode galle = new LocationNode("Galle");
-            LocationNode jaffna = new LocationNode("Jaffna");
-            LocationNode negombo = new LocationNode("Negombo");
+            // Create Nodes (Warehouses)
+            var colombo = new LocationNode("Colombo");
+            var negombo = new LocationNode("Negombo");
+            var kandy = new LocationNode("Kandy");
+            var galle = new LocationNode("Galle");
+            var jaffna = new LocationNode("Jaffna");
 
-            // Create the "Roads" (Edges) with distances in km
+            // Add Edges (Roads with KM distances)
             colombo.AddNeighbor(negombo, 35);
             colombo.AddNeighbor(galle, 125);
             negombo.AddNeighbor(kandy, 110);
-            kandy.AddNeighbor(jaffna, 320);
             galle.AddNeighbor(kandy, 210);
+            kandy.AddNeighbor(jaffna, 320);
 
-            // Add them to Graph
+            // Add to the Graph structure
             deliveryMap.Nodes.AddRange(new[] { colombo, negombo, kandy, galle, jaffna });
 
-            // Fill the UI Dropdowns
+            // Update UI Dropdowns
             foreach (var node in deliveryMap.Nodes)
             {
                 cmbStart.Items.Add(node.Name);
                 cmbEnd.Items.Add(node.Name);
             }
 
-            MessageBox.Show("Delivery Network Loaded Successfully!");
+            MessageBox.Show("Business Logistics Network Loaded Successfully!");
         }
 
         private void btnFindRoute_Click(object sender, EventArgs e)
         {
-            if (cmbStart.SelectedItem == null || cmbEnd.SelectedItem == null)
-            {
-                MessageBox.Show("Please select both a Start and Destination.");
-                return;
-            }
 
-            string startCity = cmbStart.SelectedItem.ToString();
-            string endCity = cmbEnd.SelectedItem.ToString();
+        }
 
-            // Call our Algorithm
+        private void btnCheckReach_Click(object sender, EventArgs e)
+        {
+            if (cmbStart.SelectedItem == null || cmbEnd.SelectedItem == null) return;
+
             RoutePlanner planner = new RoutePlanner();
-            string finalPath = planner.FindShortestPath(deliveryMap, startCity, endCity);
+            bool reachable = planner.CheckConnectivity(deliveryMap, cmbStart.Text, cmbEnd.Text);
 
-            // Display the result
-            lblResult.Text = finalPath;
+            if (reachable)
+                MessageBox.Show($"YES: A route exists between {cmbStart.Text} and {cmbEnd.Text}. (Verified via BFS)");
+            else
+                MessageBox.Show("NO: These warehouses are not connected in the current network.");
+        }
+
+        private void btnFindPath_Click(object sender, EventArgs e)
+        {
+            if (cmbStart.SelectedItem == null || cmbEnd.SelectedItem == null) return;
+
+            RoutePlanner planner = new RoutePlanner();
+            string result = planner.FindShortestPath(deliveryMap, cmbStart.Text, cmbEnd.Text);
+
+            lblRouteResult.Text = "Optimal Route: " + result;
         }
     }
 }
