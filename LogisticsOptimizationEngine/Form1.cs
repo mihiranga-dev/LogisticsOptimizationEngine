@@ -57,6 +57,8 @@ namespace LogisticsOptimizationEngine
             {
                 MessageBox.Show("Input Error: " + ex.Message);
             }
+
+            UpdateExecutiveSummary();
         }
 
         // Algorithm: Linear Search (Via Linked List)
@@ -103,6 +105,8 @@ namespace LogisticsOptimizationEngine
             {
                 lstDisplay.Items.Add($"ID: {p.ProductID} | {p.Name} | ${p.Price}");
             }
+
+            UpdateExecutiveSummary();
 
             MessageBox.Show("Inventory sorted successfully using Quick Sort!");
         }
@@ -270,6 +274,44 @@ namespace LogisticsOptimizationEngine
             {
                 lstDisplaySort.Items.Add($"ID: {p.ProductID} | {p.Name} | Price: ${p.Price}");
             }
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        // ALGORITHM : Aggregate Statistics (Traversal Calculation) - O(n)
+        private void UpdateExecutiveSummary()
+        {
+            Product[] products = inventory.ToArray();
+
+            if (products.Length == 0) return;
+
+            int count = products.Length;
+            double totalValue = 0;
+            double maxPrice = 0;
+            string expensiveName = "";
+
+            foreach (var p in products)
+            {
+                totalValue += (p.Price * p.StockQuantity); // Value = Price * Quantity
+
+                // ALGORITHM : Extremum Search (Finding the Maximum)
+                if (p.Price > maxPrice)
+                {
+                    maxPrice = p.Price;
+                    expensiveName = p.Name;
+                }
+            }
+
+            double avgPrice = totalValue / (products.Sum(p => p.StockQuantity)); // Weighted average
+
+            // Update UI
+            lblTotalItems.Text = $"Total Items: {count}";
+            lblTotalValue.Text = $"Total Stock Value: ${totalValue:N2}";
+            lblAvgPrice.Text = $"Avg Price per Unit: ${avgPrice:N2}";
+            lblMostExpensive.Text = $"Most Expensive: {expensiveName} (${maxPrice})";
         }
     }
 }

@@ -61,10 +61,16 @@
             this.btnSortAnl = new System.Windows.Forms.Button();
             this.lstDisplaySort = new System.Windows.Forms.ListBox();
             this.lblPerformance = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.lblTotalItems = new System.Windows.Forms.Label();
+            this.lblTotalValue = new System.Windows.Forms.Label();
+            this.lblAvgPrice = new System.Windows.Forms.Label();
+            this.lblMostExpensive = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.tabPage3.SuspendLayout();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -125,6 +131,7 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.panel1);
             this.tabPage3.Controls.Add(this.lblPerformance);
             this.tabPage3.Controls.Add(this.lstDisplaySort);
             this.tabPage3.Controls.Add(this.btnSortAnl);
@@ -390,7 +397,7 @@
             this.cmbSortMethod.Items.AddRange(new object[] {
             "Quick Sort (Optimized)",
             "Bubble Sort (Baseline)"});
-            this.cmbSortMethod.Location = new System.Drawing.Point(23, 61);
+            this.cmbSortMethod.Location = new System.Drawing.Point(49, 61);
             this.cmbSortMethod.Name = "cmbSortMethod";
             this.cmbSortMethod.Size = new System.Drawing.Size(242, 24);
             this.cmbSortMethod.TabIndex = 1;
@@ -398,7 +405,7 @@
             // btnSortAnl
             // 
             this.btnSortAnl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSortAnl.Location = new System.Drawing.Point(43, 95);
+            this.btnSortAnl.Location = new System.Drawing.Point(69, 95);
             this.btnSortAnl.Name = "btnSortAnl";
             this.btnSortAnl.Size = new System.Drawing.Size(200, 34);
             this.btnSortAnl.TabIndex = 2;
@@ -409,7 +416,7 @@
             // lstDisplaySort
             // 
             this.lstDisplaySort.FormattingEnabled = true;
-            this.lstDisplaySort.Location = new System.Drawing.Point(8, 135);
+            this.lstDisplaySort.Location = new System.Drawing.Point(34, 135);
             this.lstDisplaySort.Name = "lstDisplaySort";
             this.lstDisplaySort.Size = new System.Drawing.Size(268, 238);
             this.lstDisplaySort.TabIndex = 3;
@@ -418,12 +425,63 @@
             // 
             this.lblPerformance.AutoSize = true;
             this.lblPerformance.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPerformance.Location = new System.Drawing.Point(55, 386);
+            this.lblPerformance.Location = new System.Drawing.Point(81, 386);
             this.lblPerformance.Name = "lblPerformance";
             this.lblPerformance.Size = new System.Drawing.Size(174, 20);
             this.lblPerformance.TabIndex = 4;
             this.lblPerformance.Text = "Execution Time: 0ms";
             this.lblPerformance.Click += new System.EventHandler(this.lblPerformance_Click);
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.lblMostExpensive);
+            this.panel1.Controls.Add(this.lblAvgPrice);
+            this.panel1.Controls.Add(this.lblTotalValue);
+            this.panel1.Controls.Add(this.lblTotalItems);
+            this.panel1.Location = new System.Drawing.Point(368, 135);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(338, 196);
+            this.panel1.TabIndex = 5;
+            // 
+            // lblTotalItems
+            // 
+            this.lblTotalItems.AutoSize = true;
+            this.lblTotalItems.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotalItems.Location = new System.Drawing.Point(19, 10);
+            this.lblTotalItems.Name = "lblTotalItems";
+            this.lblTotalItems.Size = new System.Drawing.Size(134, 24);
+            this.lblTotalItems.TabIndex = 0;
+            this.lblTotalItems.Text = "Total Items: 0";
+            // 
+            // lblTotalValue
+            // 
+            this.lblTotalValue.AutoSize = true;
+            this.lblTotalValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTotalValue.Location = new System.Drawing.Point(19, 59);
+            this.lblTotalValue.Name = "lblTotalValue";
+            this.lblTotalValue.Size = new System.Drawing.Size(235, 24);
+            this.lblTotalValue.TabIndex = 1;
+            this.lblTotalValue.Text = "Total Stock Value: $0.00";
+            // 
+            // lblAvgPrice
+            // 
+            this.lblAvgPrice.AutoSize = true;
+            this.lblAvgPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblAvgPrice.Location = new System.Drawing.Point(19, 106);
+            this.lblAvgPrice.Name = "lblAvgPrice";
+            this.lblAvgPrice.Size = new System.Drawing.Size(204, 24);
+            this.lblAvgPrice.TabIndex = 2;
+            this.lblAvgPrice.Text = "Average Price: $0.00";
+            // 
+            // lblMostExpensive
+            // 
+            this.lblMostExpensive.AutoSize = true;
+            this.lblMostExpensive.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMostExpensive.Location = new System.Drawing.Point(19, 153);
+            this.lblMostExpensive.Name = "lblMostExpensive";
+            this.lblMostExpensive.Size = new System.Drawing.Size(221, 24);
+            this.lblMostExpensive.TabIndex = 3;
+            this.lblMostExpensive.Text = "Most Expensive: None";
             // 
             // Form1
             // 
@@ -441,6 +499,8 @@
             this.tabPage2.PerformLayout();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -480,6 +540,11 @@
         private System.Windows.Forms.Label lblPerformance;
         private System.Windows.Forms.ListBox lstDisplaySort;
         private System.Windows.Forms.Button btnSortAnl;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Label lblMostExpensive;
+        private System.Windows.Forms.Label lblAvgPrice;
+        private System.Windows.Forms.Label lblTotalValue;
+        private System.Windows.Forms.Label lblTotalItems;
     }
 }
 
