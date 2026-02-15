@@ -1,15 +1,16 @@
-﻿using System;
+﻿using LogisticsOptimizationEngine.Algorithm;
+using LogisticsOptimizationEngine.DataStructures;
+using LogisticsOptimizationEngine.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using LogisticsOptimizationEngine.Models;
-using LogisticsOptimizationEngine.DataStructures;
-using LogisticsOptimizationEngine.Algorithm;
 
 namespace LogisticsOptimizationEngine
 {
@@ -208,6 +209,67 @@ namespace LogisticsOptimizationEngine
             string result = planner.FindShortestPath(deliveryMap, cmbStart.Text, cmbEnd.Text);
 
             lblRouteResult.Text = "Optimal Route: " + result;
+        }
+
+        private void label9_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lblPerformance_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnShort_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnSortAnl_Click(object sender, EventArgs e)
+        {
+            // Get data from our structure
+            Product[] productArray = inventory.ToArray();
+
+            if (productArray.Length < 1)
+            {
+                MessageBox.Show("No products available to sort.");
+                return;
+            }
+
+            if (cmbSortMethod.SelectedItem == null)
+            {
+                MessageBox.Show("Please select a sorting method first.");
+                return;
+            }
+
+            ProductSorter sorter = new ProductSorter();
+            Stopwatch timer = new Stopwatch();
+
+            // Execute based on selection and measure time
+            if (cmbSortMethod.Text == "Quick Sort (Optimized)")
+            {
+                timer.Start();
+                sorter.QuickSort(productArray, 0, productArray.Length - 1);
+                timer.Stop();
+                lblPerformance.Text = $"Execution Time (Quick Sort): {timer.Elapsed.TotalMilliseconds} ms";
+            }
+            else
+            {
+                timer.Start();
+                sorter.BubbleSort(productArray);
+                timer.Stop();
+                lblPerformance.Text = $"Execution Time (Bubble Sort): {timer.Elapsed.TotalMilliseconds} ms";
+            }
+
+            // Update the UI ListBox
+            lstDisplaySort.Items.Clear();
+            lstDisplaySort.Items.Add($"--- {cmbSortMethod.Text.ToUpper()} RESULT ---");
+
+            foreach (Product p in productArray)
+            {
+                lstDisplaySort.Items.Add($"ID: {p.ProductID} | {p.Name} | Price: ${p.Price}");
+            }
         }
     }
 }

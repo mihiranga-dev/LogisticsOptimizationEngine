@@ -56,9 +56,15 @@
             this.lblSearchStatus = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.btnCheckReach = new System.Windows.Forms.Button();
+            this.label9 = new System.Windows.Forms.Label();
+            this.cmbSortMethod = new System.Windows.Forms.ComboBox();
+            this.btnSortAnl = new System.Windows.Forms.Button();
+            this.lstDisplaySort = new System.Windows.Forms.ListBox();
+            this.lblPerformance = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
+            this.tabPage3.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControl1
@@ -119,6 +125,11 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.Controls.Add(this.lblPerformance);
+            this.tabPage3.Controls.Add(this.lstDisplaySort);
+            this.tabPage3.Controls.Add(this.btnSortAnl);
+            this.tabPage3.Controls.Add(this.cmbSortMethod);
+            this.tabPage3.Controls.Add(this.label9);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
@@ -260,9 +271,9 @@
             // btnInitializeMap
             // 
             this.btnInitializeMap.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnInitializeMap.Location = new System.Drawing.Point(268, 86);
+            this.btnInitializeMap.Location = new System.Drawing.Point(283, 88);
             this.btnInitializeMap.Name = "btnInitializeMap";
-            this.btnInitializeMap.Size = new System.Drawing.Size(228, 29);
+            this.btnInitializeMap.Size = new System.Drawing.Size(202, 29);
             this.btnInitializeMap.TabIndex = 0;
             this.btnInitializeMap.Text = "Initialize Logistics Network";
             this.btnInitializeMap.UseVisualStyleBackColor = true;
@@ -344,7 +355,7 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(169, 26);
+            this.label8.Location = new System.Drawing.Point(168, 33);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(426, 29);
             this.label8.TabIndex = 7;
@@ -361,6 +372,59 @@
             this.btnCheckReach.UseVisualStyleBackColor = true;
             this.btnCheckReach.Click += new System.EventHandler(this.btnCheckReach_Click);
             // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(173, 14);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(434, 29);
+            this.label9.TabIndex = 0;
+            this.label9.Text = "Inventory Analytics and Performance";
+            this.label9.Click += new System.EventHandler(this.label9_Click);
+            // 
+            // cmbSortMethod
+            // 
+            this.cmbSortMethod.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cmbSortMethod.FormattingEnabled = true;
+            this.cmbSortMethod.Items.AddRange(new object[] {
+            "Quick Sort (Optimized)",
+            "Bubble Sort (Baseline)"});
+            this.cmbSortMethod.Location = new System.Drawing.Point(23, 61);
+            this.cmbSortMethod.Name = "cmbSortMethod";
+            this.cmbSortMethod.Size = new System.Drawing.Size(242, 24);
+            this.cmbSortMethod.TabIndex = 1;
+            // 
+            // btnSortAnl
+            // 
+            this.btnSortAnl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSortAnl.Location = new System.Drawing.Point(43, 95);
+            this.btnSortAnl.Name = "btnSortAnl";
+            this.btnSortAnl.Size = new System.Drawing.Size(200, 34);
+            this.btnSortAnl.TabIndex = 2;
+            this.btnSortAnl.Text = "Run Sorting Algorithm";
+            this.btnSortAnl.UseVisualStyleBackColor = true;
+            this.btnSortAnl.Click += new System.EventHandler(this.btnSortAnl_Click);
+            // 
+            // lstDisplaySort
+            // 
+            this.lstDisplaySort.FormattingEnabled = true;
+            this.lstDisplaySort.Location = new System.Drawing.Point(8, 135);
+            this.lstDisplaySort.Name = "lstDisplaySort";
+            this.lstDisplaySort.Size = new System.Drawing.Size(268, 238);
+            this.lstDisplaySort.TabIndex = 3;
+            // 
+            // lblPerformance
+            // 
+            this.lblPerformance.AutoSize = true;
+            this.lblPerformance.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPerformance.Location = new System.Drawing.Point(55, 386);
+            this.lblPerformance.Name = "lblPerformance";
+            this.lblPerformance.Size = new System.Drawing.Size(174, 20);
+            this.lblPerformance.TabIndex = 4;
+            this.lblPerformance.Text = "Execution Time: 0ms";
+            this.lblPerformance.Click += new System.EventHandler(this.lblPerformance_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -375,6 +439,8 @@
             this.tabPage1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
+            this.tabPage3.ResumeLayout(false);
+            this.tabPage3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -409,6 +475,11 @@
         private System.Windows.Forms.Label lblSearchStatus;
         private System.Windows.Forms.Button btnCheckReach;
         private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.ComboBox cmbSortMethod;
+        private System.Windows.Forms.Label lblPerformance;
+        private System.Windows.Forms.ListBox lstDisplaySort;
+        private System.Windows.Forms.Button btnSortAnl;
     }
 }
 
