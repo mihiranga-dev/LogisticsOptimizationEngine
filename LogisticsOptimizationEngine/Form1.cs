@@ -63,27 +63,20 @@ namespace LogisticsOptimizationEngine
         {
             try
             {
-                if (string.IsNullOrEmpty(txtID.Text))
-                {
-                    MessageBox.Show("Please enter an ID to search.");
-                    return;
-                }
+                if (string.IsNullOrEmpty(txtID.Text)) return;
+                int id = int.Parse(txtID.Text);
 
-                int searchID = int.Parse(txtID.Text);
-                Product result = inventory.FindByID(searchID);
+                // Custom Linked List
+                Product result = inventory.FindByID(id);
 
                 if (result != null)
                 {
-                    MessageBox.Show($"[LINEAR SEARCH] Found: {result.Name}\nPrice: ${result.Price}\nStock: {result.StockQuantity}");
+                    lblSearchStatus.Text = "Status: Found via Linear Search (O(n))";
+                    MessageBox.Show($"Product: {result.Name}\nMode: Linear Search\nEfficiency: Standard");
                 }
-                else
-                {
-                    MessageBox.Show("Product not found in the list.");
-                }
+                else { MessageBox.Show("Not found in Linear List."); }
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Search Error: " + ex.Message);
+            catch (Exception ex) { MessageBox.Show("Error: " + ex.Message); 
             }
         }
 
@@ -119,18 +112,19 @@ namespace LogisticsOptimizationEngine
             try
             {
                 if (string.IsNullOrEmpty(txtID.Text)) return;
-
                 int id = int.Parse(txtID.Text);
+
+                // Use Custom Binary Search Tree
                 Product result = searchTree.Search(id);
 
                 if (result != null)
-                    MessageBox.Show($"[TREE SEARCH] Found: {result.Name} (Price: ${result.Price})");
-                else
-                    MessageBox.Show("Product not found in Tree");
+                {
+                    lblSearchStatus.Text = "Status: Found via BST Search (O(log n))";
+                    MessageBox.Show($"Product: {result.Name}\nMode: Tree Search\nEfficiency: High Speed");
+                }
+                else { MessageBox.Show("Not found in Search Tree."); }
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Error: " + ex.Message);
+            catch (Exception ex) { MessageBox.Show("Error: " + ex.Message); 
             }
         }
 

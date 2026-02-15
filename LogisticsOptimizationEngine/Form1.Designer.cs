@@ -53,6 +53,7 @@
             this.label7 = new System.Windows.Forms.Label();
             this.btnFindRoute = new System.Windows.Forms.Button();
             this.lblResult = new System.Windows.Forms.Label();
+            this.lblSearchStatus = new System.Windows.Forms.Label();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -72,6 +73,7 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.lblSearchStatus);
             this.tabPage1.Controls.Add(this.btnSort);
             this.tabPage1.Controls.Add(this.lstDisplay);
             this.tabPage1.Controls.Add(this.label5);
@@ -253,7 +255,7 @@
             // 
             // btnInitializeMap
             // 
-            this.btnInitializeMap.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnInitializeMap.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnInitializeMap.Location = new System.Drawing.Point(287, 50);
             this.btnInitializeMap.Name = "btnInitializeMap";
             this.btnInitializeMap.Size = new System.Drawing.Size(195, 29);
@@ -323,6 +325,16 @@
             this.lblResult.TabIndex = 6;
             this.lblResult.Text = "Path result will appear here...";
             // 
+            // lblSearchStatus
+            // 
+            this.lblSearchStatus.AutoSize = true;
+            this.lblSearchStatus.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSearchStatus.Location = new System.Drawing.Point(87, 389);
+            this.lblSearchStatus.Name = "lblSearchStatus";
+            this.lblSearchStatus.Size = new System.Drawing.Size(126, 16);
+            this.lblSearchStatus.TabIndex = 20;
+            this.lblSearchStatus.Text = "Search Comparison";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -331,6 +343,7 @@
             this.Controls.Add(this.tabControl1);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
@@ -367,6 +380,7 @@
         private System.Windows.Forms.ComboBox cmbEnd;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label lblResult;
+        private System.Windows.Forms.Label lblSearchStatus;
     }
 }
 
