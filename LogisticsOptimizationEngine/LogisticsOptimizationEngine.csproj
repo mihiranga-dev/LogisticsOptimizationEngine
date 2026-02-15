@@ -46,7 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Algorithm\ProductShorter.cs" />
+    <Compile Include="Algorithm\ProductSorter.cs" />
     <Compile Include="Algorithm\RoutePlanner.cs" />
     <Compile Include="DataStructures\InventoryTree.cs" />
     <Compile Include="DataStructures\InventoryTreeNode.cs" />

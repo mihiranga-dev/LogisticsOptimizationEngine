@@ -9,6 +9,7 @@ namespace LogisticsOptimizationEngine.Algorithm
 {
     public class RoutePlanner
     {
+        // Algorithm: Dijkstra
         public string FindShortestPath(LogisticsGraph graph, string startName, string endName)
         {
             // Find the actual Node objects from the names provided by the UI

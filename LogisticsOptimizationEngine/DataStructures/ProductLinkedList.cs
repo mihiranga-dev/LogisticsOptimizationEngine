@@ -7,10 +7,13 @@ using LogisticsOptimizationEngine.Models;
 
 namespace LogisticsOptimizationEngine.DataStructures
 {
+    // ALGORITHM : Linear Data Structure (Singly Linked List)
+    // Purpose: Dynamic memory allocation for sequential data storage
     public class ProductLinkedList
     {
         private ProductNode head;
 
+        // O(n) Insertion at the end of the list
         public void AddProduct(Product newProduct)
         {
             ProductNode newNode = new ProductNode(newProduct);
@@ -32,6 +35,7 @@ namespace LogisticsOptimizationEngine.DataStructures
             }
         }
 
+        // Algorithm: Linear Search - Complexity: O(n)
         public Product FindByID(int id)
         {
             ProductNode current = head;
@@ -47,6 +51,7 @@ namespace LogisticsOptimizationEngine.DataStructures
             return null;
         }
 
+        // Converts Linked List to Array for Sorting/UI compatibility
         public Product[] ToArray()
         {
             int count = 0;

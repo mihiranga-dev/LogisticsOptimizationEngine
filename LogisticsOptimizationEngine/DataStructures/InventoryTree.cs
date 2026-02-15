@@ -8,15 +8,18 @@ using LogisticsOptimizationEngine.Models;
 
 namespace LogisticsOptimizationEngine.DataStructures
 {
+    // ALGORITHM : RECURSIVE BST INSERTION
     public class InventoryTree
     {
         public InventoryTreeNode Root;
 
+        // Entry point for product insertion
         public void Insert(Product product)
         {
             Root = InsertRecursive(Root, product);
         }
 
+        // Recursive insertion logic: O(log n) complexity
         public InventoryTreeNode InsertRecursive(InventoryTreeNode root, Product product)
         {
             if (root == null) return new InventoryTreeNode(product);
@@ -30,11 +33,13 @@ namespace LogisticsOptimizationEngine.DataStructures
             return root;
         }
 
+        // ALGORITHM : Binary Search Tree (BST)
         public Product Search(int id)
         {
             return SearchRecursive(Root, id);
         }
 
+        // Recursive Search: O(log n) complexity
         private Product SearchRecursive(InventoryTreeNode root, int id)
         {
             if (root == null) return null;

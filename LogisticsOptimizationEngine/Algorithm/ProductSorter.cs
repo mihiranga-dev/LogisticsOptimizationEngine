@@ -10,6 +10,9 @@ namespace LogisticsOptimizationEngine.Algorithm
 {
     public class ProductSorter
     {
+        // ALGORITHM : Quick Sort 
+        // Average Complexity: O(n log n)
+        // Worst-case Complexity: O(n^2)
         public void QuickSort(Product[] array, int low, int high)
         {
             if (low < high)
