@@ -9,20 +9,19 @@ namespace LogisticsOptimizationEngine.DataStructures
 {
     public class LocationNode
     {
-        public string Name {  get; set; }
-
-        // Dictionary holds: <Target Location, Distance>
-        public Dictionary<LocationNode, int> Connections {  get; set; }
+        public string Name { get; set; }
+        // Store edges as: <Target Node, Distance in km>
+        public Dictionary<LocationNode, int> Neighbors { get; set; }
 
         public LocationNode(string name)
         {
             Name = name;
-            Connections = new Dictionary<LocationNode, int>();
+            Neighbors = new Dictionary<LocationNode, int>();
         }
 
-        public void AddConnection(LocationNode target, int distance)
+        public void AddEdge(LocationNode target, int distance)
         {
-            Connections[target] = distance;
+            Neighbors[target] = distance;
         }
     }
 }

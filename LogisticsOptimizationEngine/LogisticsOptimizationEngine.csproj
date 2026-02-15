@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Algorithm\ProductShorter.cs" />
+    <Compile Include="Algorithm\RiutePlanner.cs" />
     <Compile Include="DataStructures\InventoryTree.cs" />
     <Compile Include="DataStructures\InventoryTreeNode.cs" />
     <Compile Include="DataStructures\LocationNode.cs" />

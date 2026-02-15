@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace LogisticsOptimizationEngine.DataStructures
 {
+    // This is the "Container" for our map
     public class LogisticsGraph
     {
         public List<LocationNode> Nodes { get; set; }
@@ -13,17 +14,6 @@ namespace LogisticsOptimizationEngine.DataStructures
         public LogisticsGraph()
         {
             Nodes = new List<LocationNode>();
-        }
-
-        // Simplest Graph Algorithm: Find all connected routes
-        public string GetRoutes(LocationNode startNode)
-        {
-            string routes = $"Routes from {startNode.Name}:\n";
-            foreach (var connection in startNode.Connections)
-            {
-                routes += $" -> to {connection.Key.Name} is {connection.Value}km\n";
-            }
-            return routes;
         }
     }
 }
