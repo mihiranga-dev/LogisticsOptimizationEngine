@@ -438,16 +438,16 @@
             this.panel1.Controls.Add(this.lblAvgPrice);
             this.panel1.Controls.Add(this.lblTotalValue);
             this.panel1.Controls.Add(this.lblTotalItems);
-            this.panel1.Location = new System.Drawing.Point(368, 135);
+            this.panel1.Location = new System.Drawing.Point(318, 135);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(338, 196);
+            this.panel1.Size = new System.Drawing.Size(441, 196);
             this.panel1.TabIndex = 5;
             // 
             // lblTotalItems
             // 
             this.lblTotalItems.AutoSize = true;
             this.lblTotalItems.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotalItems.Location = new System.Drawing.Point(19, 10);
+            this.lblTotalItems.Location = new System.Drawing.Point(3, 10);
             this.lblTotalItems.Name = "lblTotalItems";
             this.lblTotalItems.Size = new System.Drawing.Size(134, 24);
             this.lblTotalItems.TabIndex = 0;
@@ -457,7 +457,7 @@
             // 
             this.lblTotalValue.AutoSize = true;
             this.lblTotalValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTotalValue.Location = new System.Drawing.Point(19, 59);
+            this.lblTotalValue.Location = new System.Drawing.Point(5, 59);
             this.lblTotalValue.Name = "lblTotalValue";
             this.lblTotalValue.Size = new System.Drawing.Size(235, 24);
             this.lblTotalValue.TabIndex = 1;
@@ -467,7 +467,7 @@
             // 
             this.lblAvgPrice.AutoSize = true;
             this.lblAvgPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblAvgPrice.Location = new System.Drawing.Point(19, 106);
+            this.lblAvgPrice.Location = new System.Drawing.Point(5, 106);
             this.lblAvgPrice.Name = "lblAvgPrice";
             this.lblAvgPrice.Size = new System.Drawing.Size(204, 24);
             this.lblAvgPrice.TabIndex = 2;
@@ -477,7 +477,7 @@
             // 
             this.lblMostExpensive.AutoSize = true;
             this.lblMostExpensive.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMostExpensive.Location = new System.Drawing.Point(19, 153);
+            this.lblMostExpensive.Location = new System.Drawing.Point(5, 153);
             this.lblMostExpensive.Name = "lblMostExpensive";
             this.lblMostExpensive.Size = new System.Drawing.Size(221, 24);
             this.lblMostExpensive.TabIndex = 3;
@@ -492,6 +492,7 @@
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();

@@ -28,6 +28,14 @@ namespace LogisticsOptimizationEngine
         public Form1()
         {
             InitializeComponent();
+
+            this.StartPosition = FormStartPosition.CenterScreen;
+
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            SeedData();
         }
 
         // Add Product
@@ -131,6 +139,33 @@ namespace LogisticsOptimizationEngine
             }
             catch (Exception ex) { MessageBox.Show("Error: " + ex.Message); 
             }
+        }
+
+        private void SeedData()
+        {
+            // Create a list of sample products
+            List<Product> sampleData = new List<Product>
+    {
+            new Product(1, "Workstation PC", 2500.00, 5),
+            new Product(2, "Wireless Mouse", 25.50, 50),
+            new Product(3, "Mechanical Keyboard", 120.00, 20),
+            new Product(4, "Gaming Monitor", 450.00, 15),
+            new Product(5, "USB-C Hub", 45.00, 30)
+    };
+
+            // Add each product to BOTH our structures
+            foreach (var p in sampleData)
+            {
+                inventory.AddProduct(p);
+                searchTree.Insert(p);
+
+                // Also add them to the UI ListBox on Tab 3 so it's not empty
+                lstDisplay.Items.Add($"ID: {p.ProductID} | {p.Name} | ${p.Price}");
+                lstDisplaySort.Items.Add($"ID: {p.ProductID} | {p.Name} | ${p.Price}");
+            }
+
+            // Update the Analytics labels immediately
+            UpdateExecutiveSummary();
         }
 
         private void label6_Click(object sender, EventArgs e)
