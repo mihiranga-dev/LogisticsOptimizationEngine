@@ -146,11 +146,11 @@ namespace LogisticsOptimizationEngine
             // Create a list of sample products
             List<Product> sampleData = new List<Product>
     {
-            new Product(1, "Workstation PC", 2500.00, 5),
-            new Product(2, "Wireless Mouse", 25.50, 50),
-            new Product(3, "Mechanical Keyboard", 120.00, 20),
-            new Product(4, "Gaming Monitor", 450.00, 15),
-            new Product(5, "USB-C Hub", 45.00, 30)
+            new Product(1, "Workstation PC", 250000.00, 5),
+            new Product(2, "Wireless Mouse", 2500.50, 50),
+            new Product(3, "Mechanical Keyboard", 12000.00, 20),
+            new Product(4, "Gaming Monitor", 45000.00, 15),
+            new Product(5, "USB-C Hub", 4500.00, 30)
     };
 
             // Add each product to BOTH our structures
@@ -160,8 +160,8 @@ namespace LogisticsOptimizationEngine
                 searchTree.Insert(p);
 
                 // Also add them to the UI ListBox on Tab 3 so it's not empty
-                lstDisplay.Items.Add($"ID: {p.ProductID} | {p.Name} | ${p.Price}");
-                lstDisplaySort.Items.Add($"ID: {p.ProductID} | {p.Name} | ${p.Price}");
+                lstDisplay.Items.Add($"ID: {p.ProductID} | {p.Name} | LKR {p.Price}");
+                lstDisplaySort.Items.Add($"ID: {p.ProductID} | {p.Name} | LKR {p.Price}");
             }
 
             // Update the Analytics labels immediately
@@ -307,7 +307,7 @@ namespace LogisticsOptimizationEngine
 
             foreach (Product p in productArray)
             {
-                lstDisplaySort.Items.Add($"ID: {p.ProductID} | {p.Name} | Price: ${p.Price}");
+                lstDisplaySort.Items.Add($"ID: {p.ProductID} | {p.Name} | Price: LKR {p.Price}");
             }
         }
 
@@ -344,9 +344,9 @@ namespace LogisticsOptimizationEngine
 
             // Update UI
             lblTotalItems.Text = $"Total Items: {count}";
-            lblTotalValue.Text = $"Total Stock Value: ${totalValue:N2}";
-            lblAvgPrice.Text = $"Avg Price per Unit: ${avgPrice:N2}";
-            lblMostExpensive.Text = $"Most Expensive: {expensiveName} (${maxPrice})";
+            lblTotalValue.Text = $"Total Stock Value: LKR {totalValue:N2}";
+            lblAvgPrice.Text = $"Avg Price per Unit: LKR {avgPrice:N2}";
+            lblMostExpensive.Text = $"Most Expensive: {expensiveName} (LKR {maxPrice})";
         }
     }
 }
