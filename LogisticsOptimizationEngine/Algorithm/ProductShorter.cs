@@ -43,5 +43,25 @@ namespace LogisticsOptimizationEngine.Algorithm
 
             return i + 1;
         }
+
+        // ALGORITHM : Bubble Sort 
+        // Complexity: O(n^2)
+        public void BubbleSort(Product[] array)
+        {
+            int n = array.Length;
+            for (int i = 0; i < n - 1; i++)
+            {
+                for (int j = 0; j < n - i - 1; j++)
+                {
+                    if (array[j].Price > array[j + 1].Price)
+                    {
+                        // Swap
+                        Product temp = array[j];
+                        array[j] = array[j + 1];
+                        array[j + 1] = temp;
+                    }
+                }
+            }
+        }
     }
 }

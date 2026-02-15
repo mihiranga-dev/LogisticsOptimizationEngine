@@ -72,5 +72,36 @@ namespace LogisticsOptimizationEngine.Algorithm
             }
             return "No route available.";
         }
+
+        // ALGORITHM : Breadth-First Search (BFS) - Checks if two locations are connected
+        public bool CheckConnectivity(LogisticsGraph graph, string startName, string endName)
+        {
+            var startNode = graph.Nodes.Find(l => l.Name == startName);
+            var endNode = graph.Nodes.Find(l => l.Name == endName);
+
+            if (startNode == null || endNode == null) return false;
+
+            Queue<LocationNode> queue = new Queue<LocationNode>();
+            HashSet<LocationNode> visited = new HashSet<LocationNode>();
+
+            queue.Enqueue(startNode);
+            visited.Add(startNode);
+
+            while (queue.Count > 0)
+            {
+                var current = queue.Dequeue();
+                if (current == endNode) return true;
+
+                foreach (var neighbor in current.Neighbors.Keys)
+                {
+                    if (!visited.Contains(neighbor))
+                    {
+                        visited.Add(neighbor);
+                        queue.Enqueue(neighbor);
+                    }
+                }
+            }
+            return false;
+        }
     }
 }
